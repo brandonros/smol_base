@@ -1,6 +1,6 @@
 // code largely from https://github.com/smol-rs/smol-macros/commit/a6b3174e457d857f476415f6d3f31a242a0e7609
 
-use smol::Executor;
+use async_executor::Executor;
 use event_listener::Event;
 use std::sync::atomic::{AtomicBool, Ordering};
 
@@ -64,7 +64,7 @@ pub fn with_thread_pool<T>(ex: &Executor<'_>, f: impl FnOnce() -> T) -> T {
             std::thread::Builder::new()
                 .name(format!("smol-macros-{i}"))
                 .spawn_scoped(scope, || {
-                    smol::block_on(ex.run(stopper.wait()));
+                    async_io::block_on(ex.run(stopper.wait()));
                 })
                 .expect("failed to spawn thread");
         }

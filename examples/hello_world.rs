@@ -1,7 +1,7 @@
 use std::sync::Arc;
 
 use simple_error::SimpleResult;
-use smol::Executor;
+use async_executor::Executor;
 use smol_base::smol_main;
 
 async fn async_main(_ex: &Arc<Executor<'static>>) -> SimpleResult<()> {

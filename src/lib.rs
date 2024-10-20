@@ -9,7 +9,7 @@ macro_rules! smol_main {
             let ex = Arc::new(Executor::new());
 
             // run executor on thread pool
-            $crate::with_thread_pool(&ex, || smol::block_on($main_func(&ex)))
+            $crate::with_thread_pool(&ex, || async_io::block_on($main_func(&ex)))
         }
     };
 }
