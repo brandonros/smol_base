@@ -6,7 +6,7 @@ edition = "2021"
 [dependencies]
 # async
 event-listener = "5.3.1"
-async-executor = "1.13.1"
+async-executor = { git = "https://github.com/brandonros/async-executor.git", rev = "144d6c6bcd92ecba5ae1214df25f420d192d5248", features = ["main_executor"] }
 async-io = "2.3.4"
 # errors
 simple_error = { git = "https://github.com/brandonros/simple_error.git" }
